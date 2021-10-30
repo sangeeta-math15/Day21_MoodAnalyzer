@@ -1,5 +1,8 @@
 package com.bridgelabz.moodanalyzer;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 public class MoodAnalyzer {
     private String message;
 
@@ -12,7 +15,6 @@ public class MoodAnalyzer {
 
     public String analyseMood() {
         try {
-
             if (this.message.contains("Sad"))
                 return "SAD";
             else
@@ -20,5 +22,12 @@ public class MoodAnalyzer {
         } catch (NullPointerException e) {
             return "HAPPY";
         }
+    }
+    @Test
+    public void givenMessage_AnyMood_Should_Return_HAPPY() {
+        MoodAnalyzer moodAnalyser = new MoodAnalyzer("I am in Happy Mood");
+        String mood;
+        mood = moodAnalyser.analyseMood();
+        Assert.assertEquals("HAPPY", mood);
     }
 }
